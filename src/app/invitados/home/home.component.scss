@@ -1,0 +1,245 @@
+/* Contenedor principal */
+.invitation-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: #0d0221; /* Fondo oscuro */
+  color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid transparent; /* Borde inicial */
+  border-image: linear-gradient(45deg, red, yellow, green, blue, purple) 1;
+  animation: borderAnimation 3s linear infinite; /* Animación del borde */
+}
+
+/* Banderines */
+.banners {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.flag {
+  width: 40px;
+  height: 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%); /* Triángulo invertido */
+  background: linear-gradient(45deg, blue, yellow); /* Gradiente inicial */
+  animation: colorChange 3s linear infinite; /* Animación de cambio de color */
+}
+
+.flag2 {
+  width: 40px;
+  height: 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%); /* Triángulo invertido */
+  background: linear-gradient(45deg, red, yellow); /* Gradiente inicial */
+  animation: colorChange2 3s linear infinite; /* Animación de cambio de color */
+}
+
+/* Contenido de texto */
+.content {
+  text-align: center;
+  margin-top: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.main-title {
+  font-size: 3rem;
+  color: #ff4081;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.time {
+  width: 80%;
+  font-size: 1.2rem;
+  color: #ffdd57;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #ccc;
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+
+@keyframes borderAnimation {
+  0% {
+    border-image-source: linear-gradient(45deg, red, yellow, green, blue, purple);
+  }
+  50% {
+    border-image-source: linear-gradient(135deg, blue, purple, red, yellow, green);
+  }
+  100% {
+    border-image-source: linear-gradient(45deg, red, yellow, green, blue, purple);
+  }
+}
+/* Confeti */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: confettiRain ease-out infinite;
+  opacity: 0.8;
+}
+
+/* Animación de caída */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+/* Animación de movimiento lateral */
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+/* Contenido de texto */
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  z-index: 10; /* Asegura que el texto esté encima del confeti */
+}
+
+.content h1 {
+  font-size: 3rem;
+  color: #ff4081;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+/* Animación de confeti que se dispersa */
+@keyframes confettiRain {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(calc(-50px + 100px * random())) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Contenido de la invitación */
+
+
+.content h1 {
+  font-size: 3rem;
+  color: #ff4081;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.content p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+@keyframes colorChange {
+  0% {
+    background: linear-gradient(45deg, red, yellow);
+  }
+  25% {
+    background: linear-gradient(45deg, yellow, green);
+  }
+  50% {
+    background: linear-gradient(45deg, green, blue);
+  }
+  75% {
+    background: linear-gradient(45deg, blue, purple);
+  }
+  100% {
+    background: linear-gradient(45deg, purple, red);
+  }
+}
+
+@keyframes colorChange2 {
+  0% {
+    background: linear-gradient(45deg, purple, red);
+  }
+  25% {
+    background: linear-gradient(45deg, red, yellow);
+    
+  }
+  50% {
+    background: linear-gradient(45deg, yellow, green);
+    
+  }
+  75% {
+    background: linear-gradient(45deg, green, blue);
+    
+  }
+  100% {
+    background: linear-gradient(45deg, blue, purple);
+    
+  }
+}
+
+.serpentinas {
+  top: -40px;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.taitaCarnaval {
+ margin-top: 10px;
+ z-index: 2;
+}
+
+.divBotonAsistencia {
+ z-index: 2;
+ 
+}
+
+.botonAsistencia{
+  margin-top: 40px;
+  padding: 10px 20px;
+  background-color: #ff4081;
+  color: white;
+  border-radius: 10px;
+}

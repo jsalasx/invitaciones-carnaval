@@ -1,19 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, model, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterOutlet } from '@angular/router';
-import { DialogComponent } from './invitados/dialog/dialog.component';
-import { TablaComponent } from './invitados/tabla/tabla.component';
-
+import { CommonModule } from '@angular/common';
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, TablaComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [MatDialogModule, CommonModule],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss'
 })
-export class AppComponent {
-  title = 'invitaciones';flags = Array(10).fill(0); // Genera 10 elementos para iterar
+export class HomeComponent {
+title = 'invitaciones';flags = Array(10).fill(0); // Genera 10 elementos para iterar
   private audio = new Audio();
   private isPlaying = false;
   dialog = inject(MatDialog);
@@ -66,5 +64,4 @@ export class AppComponent {
     this.dialog.open(DialogComponent, {
     });
   }
-
 }

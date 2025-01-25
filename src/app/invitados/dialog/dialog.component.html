@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Ingrese el nombre de su familia y el número de acompañantes:</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-dialog-content>
+        <mat-form-field class="w-full gap-3">
+            <div class="flex flex-col gap-4 w-full">
+                <div class="w-full">
+                    <mat-label>Familia:</mat-label>
+                    <input matFormFieldControl matInput formControlName="familia" placeholder="Nombre de la familia"
+                        [(ngModel)]="familia" />
+                    <mat-error *ngIf="form.get('familia')?.hasError('required') && form.get('familia')?.touched">
+                        El nombre de la familia es obligatorio.
+                    </mat-error>
+                </div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="w-full gap-3">
+            <div class="flex flex-col gap-4 w-full">
+                <div class="w-full">
+                    <mat-label>Acompañantes:</mat-label>
+                    <input type="number" matInput formControlName="numPersonas" placeholder="Número de acompañantes"
+                        [(ngModel)]="numPersonas" />
+                    <mat-error
+                        *ngIf="form.get('numPersonas')?.hasError('required') && form.get('numPersonas')?.touched">
+                        El número de acompañantes es obligatorio.
+                    </mat-error>
+                    <mat-error *ngIf="form.get('numPersonas')?.hasError('min') && form.get('numPersonas')?.touched">
+                        El número de acompañantes debe ser mayor o igual a 0.
+                    </mat-error>
+                </div>
+            </div>
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button (click)="onClose()">Cancelar</button>
+        <button type="submit" class="bg-pink-500 text-gray-50 px-10 py-3 rounded-xl"
+            [disabled]="form.invalid || disabledSubmit" cdkFocusInitial>
+            Enviar
+        </button>
+    </mat-dialog-actions>
+</form>
