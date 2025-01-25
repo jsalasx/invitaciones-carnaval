@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, model, signal } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { RouterOutlet } from '@angular/router';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -39,12 +41,13 @@ export class AppComponent {
     this.audio.src = 'musica_carnaval.mp3';
     this.audio.volume = 0.5; // Ajusta el volumen (50%)
     this.audio.load();
-    this.audio.play().then(() => {
-      this.isPlaying = true;
-    }).
-    catch(error => {
-      console.error('Reproducción automática bloqueada:', error);
-    });
+    // this.audio.play().then(() => {
+    //   this.isPlaying = true;
+    // }).
+    // catch(error => {
+    //   console.error('Reproducción automática bloqueada:', error);
+    // });
+    this.openDialog();
   }
 
   pauseMusic() {
@@ -53,6 +56,24 @@ export class AppComponent {
   getRandomColor(): string {
     const colors = ['#ff6f61', '#ffd54f', '#4fc3f7', '#81c784', '#ba68c8'];
     return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+
+  readonly animal = signal('');
+  readonly name = model('');
+  readonly dialog = inject(MatDialog);
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {name: this.name(), animal: this.animal()},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        this.animal.set(result);
+      }
+    });
   }
 
 }
