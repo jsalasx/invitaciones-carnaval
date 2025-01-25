@@ -26,7 +26,7 @@ export class AppComponent {
       });
     }
 
-    //this.playMusic();
+    this.playMusic();
 
 
   }
