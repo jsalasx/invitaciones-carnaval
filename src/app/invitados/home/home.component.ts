@@ -40,12 +40,12 @@ title = 'invitaciones';flags = Array(10).fill(0); // Genera 10 elementos para it
     this.audio.src = 'musica_carnaval.mp3';
     this.audio.volume = 0.5; // Ajusta el volumen (50%)
     this.audio.load();
-    // this.audio.play().then(() => {
-    //   this.isPlaying = true;
-    // }).
-    // catch(error => {
-    //   console.error('Reproducción automática bloqueada:', error);
-    // });
+    this.audio.play().then(() => {
+      this.isPlaying = true;
+    }).
+    catch(error => {
+      console.error('Reproducción automática bloqueada:', error);
+    });
     
   }
 
